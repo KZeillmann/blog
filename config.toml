@@ -1,0 +1,4 @@
+baseURL = "https://kzeillmann.com/"
+languageCode = "en-us"
+title = "Kevin Zeillmann"
+theme = "ananke"
