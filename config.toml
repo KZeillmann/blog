@@ -2,3 +2,7 @@ baseURL = "https://kzeillmann.com/"
 languageCode = "en-us"
 title = "Kevin Zeillmann"
 theme = "ananke"
+
+[params]
+  twitter = "https://twitter.com/kzeillmann"
+  linkedin = "https://www.linkedin.com/in/kevin-zeillmann/"
