@@ -14,7 +14,7 @@ const createNoteTable = (tuningFrequency = 440): Note[] => {
 
   // https://stackoverflow.com/a/36953272/2464234
   // generates 0 -> 7
-  Array.from(Array(7).keys()).forEach((octaveIndex) => {
+  Array.from(Array(8).keys()).forEach((octaveIndex) => {
     const octave = createOctave(
       (tuningFrequency / 16) * Math.pow(2, octaveIndex),
       octaveIndex
@@ -22,6 +22,8 @@ const createNoteTable = (tuningFrequency = 440): Note[] => {
     if (octaveIndex === 0) {
       // Keyboard begins with A natural
       noteFreq.push(...octave.slice(9));
+    } else if (octaveIndex === 7) {
+      noteFreq.push(...octave.slice(0, 1));
     } else {
       noteFreq.push(...octave);
     }
@@ -130,6 +132,7 @@ const createOctave = (aFrequency: number, octave: number): Note[] => {
 };
 
 const Keyboard = () => {
+  // TODO: Get these in context somehow
   const audioContext = new AudioContext();
   const gainNode = audioContext.createGain();
   gainNode.connect(audioContext.destination);

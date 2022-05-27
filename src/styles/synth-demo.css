@@ -10,15 +10,16 @@
   width: auto;
   display: flex;
   padding: 0;
-  margin: 0;
+  margin: 1rem;
   position: relative;
 }
 
-.keyboard li:first-child {
+.keyboard :first-child {
   border-radius: 5px 0 5px 5px;
 }
-.keyboard li:last-child {
+.keyboard :last-child {
   border-radius: 5px 0 5px 5px;
+  border-right: 1px solid hsl(0, 0%, 29%);
 }
 
 .key {
