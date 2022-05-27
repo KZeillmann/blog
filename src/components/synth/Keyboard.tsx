@@ -14,13 +14,12 @@ const createNoteTable = (tuningFrequency = 440): Note[] => {
 
   // https://stackoverflow.com/a/36953272/2464234
   // generates 0 -> 7
-  Array.from(Array(7).keys()).forEach((value) => {
-    console.log(value);
+  Array.from(Array(7).keys()).forEach((octaveIndex) => {
     const octave = createOctave(
-      (tuningFrequency / 16) * Math.pow(2, value),
-      value
+      (tuningFrequency / 16) * Math.pow(2, octaveIndex),
+      octaveIndex
     );
-    if (value === 0) {
+    if (octaveIndex === 0) {
       // Keyboard begins with A natural
       noteFreq.push(...octave.slice(9));
     } else {
@@ -130,14 +129,11 @@ const createOctave = (aFrequency: number, octave: number): Note[] => {
   ];
 };
 
-type KeyboardProps = {
-  audioContext: AudioContext;
-  gainNode: GainNode;
-};
-
-const Keyboard = (props: KeyboardProps) => {
+const Keyboard = () => {
+  const audioContext = new AudioContext();
+  const gainNode = audioContext.createGain();
+  gainNode.connect(audioContext.destination);
   const keyData = createNoteTable();
-  const { audioContext, gainNode } = props;
   return (
     <div className="keyboard">
       {keyData.map((note) => {

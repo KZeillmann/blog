@@ -2,12 +2,9 @@ import Keyboard from "./Keyboard";
 import VolumeControl from "./VolumeControl";
 
 const Synth = () => {
-  const audioContext = new window.AudioContext();
-  const gainNode = audioContext.createGain();
-  gainNode.connect(audioContext.destination);
   return (
     <div class="container">
-      <Keyboard audioContext={audioContext} gainNode={gainNode} />
+      <Keyboard />
       <div class="settingsBar">
         <VolumeControl gainNode />
         <div class="right">

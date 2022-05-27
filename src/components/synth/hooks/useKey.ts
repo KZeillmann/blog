@@ -7,6 +7,7 @@ const useKey = (
 ) => {
   const [pressed, setPressed] = useState(false);
   const [oscillator, setOscillator] = useState<OscillatorNode | null>(null);
+
   const notePressed = (event) => {
     if (event.buttons & 1) {
       if (!pressed) {
@@ -17,21 +18,18 @@ const useKey = (
   };
 
   const noteReleased = (event) => {
-    setTimeout(() => {
-      if (pressed) {
-        oscillator.stop();
-        setPressed(false);
-      }
-    }, 200);
+    if (pressed) {
+      oscillator.stop();
+      setPressed(false);
+    }
   };
 
-  const playTone = (frequency) => {
-    audioContext.resume();
+  const playTone = (frequency: number) => {
     let osc = audioContext.createOscillator();
     osc.connect(gainNode);
 
-    // TODO: Let
-    let type: OscillatorType = "triangle"; //wavePicker.options[wavePicker.selectedIndex].value;
+    // TODO: Let this be changed
+    let type: OscillatorType = "sine"; //wavePicker.options[wavePicker.selectedIndex].value;
 
     // if (type == "custom") {
     //   osc.setPeriodicWave(customWaveform);
