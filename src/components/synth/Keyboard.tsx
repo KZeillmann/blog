@@ -1,6 +1,4 @@
-import { useContext } from "preact/hooks";
 import Key from "./Key";
-import { AudioCtx } from "./Synth";
 
 export type Note = {
   octave: number;
@@ -16,13 +14,18 @@ const createNoteTable = (tuningFrequency = 440): Note[] => {
 
   // https://stackoverflow.com/a/36953272/2464234
   // generates 0 -> 7
-  Array.from(Array(8).keys()).forEach((value) => {
+  Array.from(Array(7).keys()).forEach((value) => {
     console.log(value);
     const octave = createOctave(
       (tuningFrequency / 16) * Math.pow(2, value),
       value
     );
-    noteFreq.push(...octave);
+    if (value === 0) {
+      // Keyboard begins with A natural
+      noteFreq.push(...octave.slice(9));
+    } else {
+      noteFreq.push(...octave);
+    }
   });
 
   return noteFreq;

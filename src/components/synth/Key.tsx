@@ -1,31 +1,35 @@
-import useKey from './hooks/useKey';
-import { Note } from './Keyboard';
+import useKey from "./hooks/useKey";
+import { Note } from "./Keyboard";
 
 type KeyProps = {
-    note: Note;
-    audioContext: AudioContext;
-    gainNode: GainNode;
-}
+  note: Note;
+  audioContext: AudioContext;
+  gainNode: GainNode;
+};
 
 const Key = (props: KeyProps) => {
-    const {
-        note,
-        audioContext,
-        gainNode
-    } = props;
+  const { note, audioContext, gainNode } = props;
 
-    const {
-        notePressed,
-        noteReleased
-    } = useKey(audioContext, gainNode, note.frequency);
+  const { notePressed, noteReleased } = useKey(
+    audioContext,
+    gainNode,
+    note.frequency
+  );
+  const offsetNotes = ["D", "E", "G", "A", "B"];
+  const offset = offsetNotes.includes(note.noteName) ? "offset" : "";
 
-    return (
-        <div>
-            <div className={`key ${note.keyColor}`} data-octave={note.octave} data-note={note.noteName} data-frequency={note.frequency}
-                onMouseDown={notePressed} onMouseUp={noteReleased} onMouseOver={notePressed} onMouseLeave={noteReleased} />
-            <div>{note.noteName}<sub>{note.octave}</sub></div>
-        </div>
-    );
-}
+  return (
+    <div
+      className={`key ${note.keyColor} ${offset}`.trim()}
+      data-octave={note.octave}
+      data-note={note.noteName}
+      data-frequency={note.frequency}
+      onMouseDown={notePressed}
+      onMouseUp={noteReleased}
+      onMouseOver={notePressed}
+      onMouseLeave={noteReleased}
+    />
+  );
+};
 
 export default Key;

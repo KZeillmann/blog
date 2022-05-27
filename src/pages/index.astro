@@ -12,9 +12,11 @@ let title = 'Example Blog';
 let description = 'The perfect starter for your perfect blog.';
 let permalink = 'https://example.com/';
 
+const { MODE } = import.meta.env;
+
 // Data Fetching: List all Markdown posts in the repo.
 
-let allPosts = await Astro.glob('./posts/*.md');
+let allPosts = (await Astro.glob('./posts/*.md')).filter(article => MODE === "development" || !article.frontmatter.draft);
 allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 
 // Full Astro Component Syntax:

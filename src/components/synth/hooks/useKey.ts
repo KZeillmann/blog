@@ -17,10 +17,12 @@ const useKey = (
   };
 
   const noteReleased = (event) => {
-    if (pressed) {
-      oscillator.stop();
-      setPressed(false);
-    }
+    setTimeout(() => {
+      if (pressed) {
+        oscillator.stop();
+        setPressed(false);
+      }
+    }, 200);
   };
 
   const playTone = (frequency) => {
@@ -29,7 +31,7 @@ const useKey = (
     osc.connect(gainNode);
 
     // TODO: Let
-    let type: OscillatorType = "sine"; //wavePicker.options[wavePicker.selectedIndex].value;
+    let type: OscillatorType = "triangle"; //wavePicker.options[wavePicker.selectedIndex].value;
 
     // if (type == "custom") {
     //   osc.setPeriodicWave(customWaveform);
