@@ -24,6 +24,7 @@ const ContactPicker = () => {
   const selectContact = async () => {
     const props = ["name", "email", "tel", "address", "icon"];
     // TODO: Get this typed correctly if it ever becomes a standard
+    // @ts-ignore
     const [contact] = await navigator.contacts.select(props);
     setSelectedContact(contact);
   };
