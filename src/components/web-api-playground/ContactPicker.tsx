@@ -23,12 +23,13 @@ const ContactPicker = () => {
 
   const selectContact = async () => {
     const props = ["name", "email", "tel", "address", "icon"];
+    // TODO: Get this typed correctly if it ever becomes a standard
     const [contact] = await navigator.contacts.select(props);
     setSelectedContact(contact);
   };
 
   return (
-    <details id="contact-picker" open>
+    <details id="contact-picker">
       <summary>Contact Picker</summary>
       <p>
         This is an experimental API only currently supported on Android devices.
@@ -43,10 +44,10 @@ const ContactPicker = () => {
             <li>Name: {selectedContact.name}</li>
             <li>Emails: {selectedContact.email.join(", ")}</li>
             <li>Telephone: {selectedContact.tel}</li>
-            <li>Address (JSON): {selectedContact.address.toJSON()}</li>
-            <li>
+            {/* <li>Address (JSON): {selectedContact.address.toJSON()}</li> */}
+            {/* <li>
               Icon: <img src={URL.createObjectURL(selectedContact.icon[0])} />
-            </li>
+            </li> */}
           </ul>
         </>
       )}
