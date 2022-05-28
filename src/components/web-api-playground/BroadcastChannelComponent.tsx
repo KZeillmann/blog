@@ -20,7 +20,7 @@ const BroadcastChannelComponent = () => {
   };
   return (
     <details id="broadcast-channel">
-      <summary>Broadcast Channel API</summary>
+      <summary>Broadcast Channel</summary>
       <p>
         Broadcast channels allow you to post and receive messages across many
         different browsing contexts - if you have the same domain open in

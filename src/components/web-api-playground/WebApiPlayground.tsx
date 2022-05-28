@@ -2,6 +2,7 @@ import BroadcastChannelComponent from "./BroadcastChannelComponent";
 import Canvas from "./Canvas";
 import Clipboard from "./Clipboard";
 import ContactPicker from "./ContactPicker";
+import GamePad from "./GamePad";
 
 const WebApiPlayground = () => {
   return (
@@ -11,6 +12,7 @@ const WebApiPlayground = () => {
       <Canvas />
       <Clipboard />
       <ContactPicker />
+      <GamePad />
     </section>
   );
 };
