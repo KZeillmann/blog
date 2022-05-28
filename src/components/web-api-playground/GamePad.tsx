@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import "preact/debug";
 
 const GamePad = () => {
@@ -17,16 +17,42 @@ const GamePad = () => {
     gamePadDisconnectedMessage
   );
 
+  // Corresponds to my 360 controller
+  const buttonNames = [
+    "A",
+    "B",
+    "X",
+    "Y",
+    "LB",
+    "RB",
+    "LT",
+    "LB",
+    "Back",
+    "Start",
+    "L3",
+    "R3",
+    "D Up",
+    "D Down",
+    "D Left",
+    "D Right",
+  ];
+
   const [connected, setConnected] = useState(false);
 
   const [gamePad, setGamePad] = useState<Gamepad | undefined>(undefined);
 
+  const canvasRef = useRef();
+
+  let lastAnimationFrame = undefined;
+
   useEffect(() => {
     if (connected) {
       const gp = navigator.getGamepads()[0];
+      console.log(gp.buttons);
       setGamePad(gp);
       setConnectionMessage(gamePadConnectedMessage);
-      loop();
+      // setupCanvas();
+      requestAnimationFrame(loop);
     } else {
       setConnectionMessage(gamePadDisconnectedMessage);
       setGamePad(undefined);
@@ -36,7 +62,55 @@ const GamePad = () => {
   const loop = () => {
     const gp = navigator.getGamepads()[0];
     setGamePad(gp);
+    animateCanvas(gp);
     requestAnimationFrame(loop);
+  };
+
+  // TODO: Use this to segment into setup vs animation
+  const setupCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    const leftXCenter = canvas.width / 3;
+    const YCenter = canvas.height / 2;
+    const radius = 40;
+    ctx.beginPath();
+    ctx.arc(leftXCenter, YCenter, radius, 2 * Math.PI, false);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(leftXCenter * 2, YCenter, radius, 2 * Math.PI, false);
+    ctx.stroke();
+  };
+
+  const animateCanvas = (gp: Gamepad) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const leftXCenter = canvas.width / 3;
+    const YCenter = canvas.height / 2;
+    const radius = 40;
+    ctx.beginPath();
+    ctx.arc(leftXCenter, YCenter, radius, 2 * Math.PI, false);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(leftXCenter * 2, YCenter, radius, 2 * Math.PI, false);
+    ctx.lineWidth = 5;
+    ctx.stroke();
+
+    ctx.fillStyle = "red";
+
+    const [leftX, leftY, rightX, rightY] = gp.axes;
+    ctx.fillRect(leftX * radius + leftXCenter, leftY * radius + YCenter, 5, 5);
+    ctx.fillRect(
+      rightX * radius + leftXCenter * 2,
+      rightY * radius + YCenter,
+      5,
+      5
+    );
   };
 
   return (
@@ -49,8 +123,22 @@ const GamePad = () => {
           <ul>
             <li>id: {gamePad.id}</li>
             <li>index: {gamePad.index}</li>
-            <li>axes: {gamePad.axes.join(", ")}</li>
+            <li>
+              buttons:{" "}
+              {gamePad.buttons.map((button, i) => (
+                <p>
+                  <span
+                    className={button.pressed ? "button pressed" : "button"}
+                  >
+                    {buttonNames[i]}
+                  </span>
+                </p>
+              ))}
+            </li>
           </ul>
+          <canvas width={400} height={200} ref={canvasRef}>
+            Text here
+          </canvas>
         </div>
       )}
     </details>

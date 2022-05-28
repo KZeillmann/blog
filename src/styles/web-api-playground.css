@@ -11,3 +11,19 @@
 ul {
   padding-inline-start: 1rem;
 }
+
+canvas {
+  border: 1px solid black;
+}
+
+.pressed {
+  color: red;
+  font-weight: bold;
+  border: 1px solid red;
+}
+
+.button {
+  padding: 0.25rem;
+  border: 1px solid black;
+  border-radius: 50%;
+}
