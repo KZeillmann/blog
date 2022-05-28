@@ -1,5 +1,6 @@
 import BroadcastChannelComponent from "./BroadcastChannelComponent";
 import Canvas from "./Canvas";
+import Clipboard from "./Clipboard";
 
 const WebApiPlayground = () => {
   return (
@@ -7,6 +8,7 @@ const WebApiPlayground = () => {
       <h1>Web APIs</h1>
       <BroadcastChannelComponent />
       <Canvas />
+      <Clipboard />
     </section>
   );
 };
