@@ -34,6 +34,7 @@ const ContactPicker = () => {
         This is an experimental API only currently supported on Android devices.
       </p>
       <p>Support: {supportMessage}</p>
+
       {supported && <button onClick={selectContact}>Select a Contact</button>}
       {selectedContact && (
         <>
