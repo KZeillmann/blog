@@ -1,6 +1,7 @@
 import BroadcastChannelComponent from "./BroadcastChannelComponent";
 import Canvas from "./Canvas";
 import Clipboard from "./Clipboard";
+import ContactPicker from "./ContactPicker";
 
 const WebApiPlayground = () => {
   return (
@@ -9,6 +10,7 @@ const WebApiPlayground = () => {
       <BroadcastChannelComponent />
       <Canvas />
       <Clipboard />
+      <ContactPicker />
     </section>
   );
 };

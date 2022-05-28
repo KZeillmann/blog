@@ -62,12 +62,11 @@ const Clipboard = () => {
   );
 
   return (
-    <section>
-      <h2>Clipboard</h2>
+    <details>
+      <summary>Clipboard</summary>
       <p>
-        In some browsers, the Clipboard API is only available in secure contexts
-        (HTTPS). Some allow it based on browser permissions (whether it's
-        allowed for the site).
+        The Clipboard API is only available in secure contexts. Some allow it
+        based on browser permissions (whether it's allowed for the site).
       </p>
       <p>Permission settings: {permissionMessage}</p>
       <div className="row">
@@ -90,7 +89,7 @@ const Clipboard = () => {
       <img src={clipboardImageSrc} />
       <p>And a place to paste text</p>
       <textarea name="" id="" cols="30" rows="5"></textarea>
-    </section>
+    </details>
   );
 };
 

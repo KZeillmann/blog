@@ -2,11 +2,12 @@ import { useEffect, useState } from "preact/hooks";
 
 const Canvas = () => {
   return (
-    <section>
-      <h2>Canvas</h2>
-      <p></p>
-      <canvas></canvas>
-    </section>
+    <details id="canvas">
+      <summary>Canvas</summary>
+      <p>
+        TODO: Link to whole page demo about Canvas (too many examples for here)
+      </p>
+    </details>
   );
 };
 export default Canvas;

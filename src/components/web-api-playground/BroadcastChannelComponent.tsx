@@ -19,8 +19,8 @@ const BroadcastChannelComponent = () => {
     channel.postMessage(message);
   };
   return (
-    <section>
-      <h2>Broadcast Channel API</h2>
+    <details id="broadcast-channel">
+      <summary>Broadcast Channel API</summary>
       <p>
         Broadcast channels allow you to post and receive messages across many
         different browsing contexts - if you have the same domain open in
@@ -45,7 +45,7 @@ const BroadcastChannelComponent = () => {
         />
         <input type="Submit" value="Submit" />
       </form>
-    </section>
+    </details>
   );
 };
 
