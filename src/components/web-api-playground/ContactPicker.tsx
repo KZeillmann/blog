@@ -40,10 +40,12 @@ const ContactPicker = () => {
           <h3>Contact Details</h3>
           <ul>
             <li>Name: {selectedContact.name}</li>
-            <li>Name: {selectedContact.email}</li>
-            <li>Name: {selectedContact.tel}</li>
-            <li>Name: {selectedContact.address}</li>
-            <li>Name: {selectedContact.icon}</li>
+            <li>Emails: {selectedContact.email.join(", ")}</li>
+            <li>Telephone: {selectedContact.tel}</li>
+            <li>Address (JSON): {selectedContact.address.toJSON()}</li>
+            <li>
+              Icon: <img src={URL.createObjectURL(selectedContact.icon[0])} />
+            </li>
           </ul>
         </>
       )}
