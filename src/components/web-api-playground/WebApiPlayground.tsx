@@ -4,6 +4,8 @@ import Clipboard from "./Clipboard";
 import ContactPicker from "./ContactPicker";
 import GamePad from "./GamePad";
 import GeolocationComponent from "./GeolocationComponent";
+import MediaStream from "./MediaStream";
+import Sensor from "./Sensor";
 
 const WebApiPlayground = () => {
   return (
@@ -15,6 +17,8 @@ const WebApiPlayground = () => {
       <ContactPicker />
       <GamePad />
       <GeolocationComponent />
+      <MediaStream />
+      <Sensor />
     </section>
   );
 };
