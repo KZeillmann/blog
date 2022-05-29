@@ -3,6 +3,7 @@ import Canvas from "./Canvas";
 import Clipboard from "./Clipboard";
 import ContactPicker from "./ContactPicker";
 import GamePad from "./GamePad";
+import GeolocationComponent from "./GeolocationComponent";
 
 const WebApiPlayground = () => {
   return (
@@ -13,6 +14,7 @@ const WebApiPlayground = () => {
       <Clipboard />
       <ContactPicker />
       <GamePad />
+      <GeolocationComponent />
     </section>
   );
 };

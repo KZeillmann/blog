@@ -114,7 +114,7 @@ const GamePad = () => {
   };
 
   return (
-    <details open>
+    <details>
       <summary>Game Pad API</summary>
       <p>Gamepad Status: {connectionMessage}</p>
       {connected && gamePad && (
@@ -123,18 +123,6 @@ const GamePad = () => {
           <ul>
             <li>id: {gamePad.id}</li>
             <li>index: {gamePad.index}</li>
-            <li>
-              buttons:{" "}
-              {gamePad.buttons.map((button, i) => (
-                <p>
-                  <span
-                    className={button.pressed ? "button pressed" : "button"}
-                  >
-                    {buttonNames[i]}
-                  </span>
-                </p>
-              ))}
-            </li>
           </ul>
           <canvas width={400} height={200} ref={canvasRef}>
             Text here
