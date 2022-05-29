@@ -42,7 +42,7 @@ const GeolocationComponent = () => {
   };
 
   return (
-    <details open>
+    <details>
       <summary>Geolocation</summary>
       <p>Geolocation gets your current device location.</p>
       <div className="row">
