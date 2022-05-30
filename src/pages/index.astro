@@ -1,7 +1,7 @@
 ---
 // Component Imports
 import BaseHead from '../components/BaseHead.astro';
-import BlogHeader from '../components/BlogHeader.astro';
+import BaseHeader from '../components/BaseHeader.astro';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
 
 // Component Script:
@@ -16,8 +16,9 @@ const { MODE } = import.meta.env;
 
 // Data Fetching: List all Markdown posts in the repo.
 
-let allPosts = (await Astro.glob('./posts/*.md')).filter(article => MODE === "development" || !article.frontmatter.draft);
-allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+const allPosts = (await Astro.glob('./posts/*.md'))
+	.filter(article => MODE === "development" || !article.frontmatter.draft)
+	.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -64,7 +65,7 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
 	</head>
 
 	<body>
-		<BlogHeader />
+		<BaseHeader />
 		<div class="wrapper">
 			<main class="content">
 				<section class="intro">

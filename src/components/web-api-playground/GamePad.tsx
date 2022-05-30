@@ -66,23 +66,6 @@ const GamePad = () => {
     requestAnimationFrame(loop);
   };
 
-  // TODO: Use this to segment into setup vs animation
-  const setupCanvas = () => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-
-    const leftXCenter = canvas.width / 3;
-    const YCenter = canvas.height / 2;
-    const radius = 40;
-    ctx.beginPath();
-    ctx.arc(leftXCenter, YCenter, radius, 2 * Math.PI, false);
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.arc(leftXCenter * 2, YCenter, radius, 2 * Math.PI, false);
-    ctx.stroke();
-  };
-
   const animateCanvas = (gp: Gamepad) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -92,6 +75,9 @@ const GamePad = () => {
     const leftXCenter = canvas.width / 3;
     const YCenter = canvas.height / 2;
     const radius = 40;
+    ctx.strokeStyle = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue("--theme-text");
     ctx.beginPath();
     ctx.arc(leftXCenter, YCenter, radius, 2 * Math.PI, false);
     ctx.stroke();
