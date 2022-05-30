@@ -3,6 +3,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import '../../styles/web-api-playground.css';
 import WebApiPlayground from '../../components/web-api-playground/WebApiPlayground';
+import BaseHeader from '../../components/BaseHeader.astro';
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
@@ -16,6 +17,7 @@ const permalink = 'https://kzeillmann.com/';
 		<BaseHead {title} {description} {permalink} />
     </head>
     <body>
+        <BaseHeader />
         <WebApiPlayground client:only />
     </body>
 </html>

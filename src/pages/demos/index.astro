@@ -1,0 +1,33 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import BaseHeader from "../../components/BaseHeader.astro";
+const title = "Tech Demos"
+const description = "A few demos of tech I'm trying out"
+
+
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description}/>
+  </head>
+  <body>
+    <BaseHeader />
+    <main>
+      <section>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </section>
+      <div class="demo-container">
+        
+        <article>
+          <a href="/demos/synth-demo"><h2>Synth Demo</h2></a>
+          <p></p>
+        </article>
+        <article>
+          <a href="/demos/web-api-playground"><h2>Web API Playground</h2></a>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>
