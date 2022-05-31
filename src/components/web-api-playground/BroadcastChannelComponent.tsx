@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import DemoWrapper from "./DemoWrapper";
 
 const BroadcastChannelComponent = () => {
   const channel = new BroadcastChannel("kevin");
@@ -19,8 +20,7 @@ const BroadcastChannelComponent = () => {
     channel.postMessage(message);
   };
   return (
-    <details id="broadcast-channel">
-      <summary>Broadcast Channel</summary>
+    <DemoWrapper id="broadcast-channel" title="Broadcast Channel">
       <p>
         Broadcast channels allow you to post and receive messages across many
         different browsing contexts - if you have the same domain open in
@@ -36,7 +36,7 @@ const BroadcastChannelComponent = () => {
           return <p>{sentMessage}</p>;
         })}
       </div>
-      <form onSubmit={onSubmit} autocomplete="off">
+      <form onSubmit={onSubmit} autocomplete="off" class="flex gap-2">
         <input
           type="text"
           name="message"
@@ -45,7 +45,7 @@ const BroadcastChannelComponent = () => {
         />
         <input type="Submit" value="Submit" />
       </form>
-    </details>
+    </DemoWrapper>
   );
 };
 

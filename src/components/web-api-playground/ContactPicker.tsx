@@ -1,4 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
+import DemoWrapper from "./DemoWrapper";
 
 const ContactPicker = () => {
   const [supportMessage, setSupportMessage] = useState(
@@ -30,13 +31,12 @@ const ContactPicker = () => {
   };
 
   return (
-    <details id="contact-picker">
-      <summary>Contact Picker</summary>
+    <DemoWrapper id="contact-picker" title="Contact Picker">
+      {" "}
       <p>
         This is an experimental API only currently supported on Android devices.
       </p>
       <p>Support: {supportMessage}</p>
-
       {supported && <button onClick={selectContact}>Select a Contact</button>}
       {selectedContact && (
         <>
@@ -52,7 +52,7 @@ const ContactPicker = () => {
           </ul>
         </>
       )}
-    </details>
+    </DemoWrapper>
   );
 };
 

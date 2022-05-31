@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import "preact/debug";
+import DemoWrapper from "./DemoWrapper";
 
 const GamePad = () => {
   const myWindow = window;
@@ -100,8 +101,7 @@ const GamePad = () => {
   };
 
   return (
-    <details>
-      <summary>Game Pad API</summary>
+    <DemoWrapper id="game-pad" title="Game Pad">
       <p>Gamepad Status: {connectionMessage}</p>
       {connected && gamePad && (
         <div>
@@ -115,7 +115,7 @@ const GamePad = () => {
           </canvas>
         </div>
       )}
-    </details>
+    </DemoWrapper>
   );
 };
 

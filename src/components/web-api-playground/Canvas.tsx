@@ -1,13 +1,12 @@
-import { useEffect, useState } from "preact/hooks";
+import DemoWrapper from "./DemoWrapper";
 
 const Canvas = () => {
   return (
-    <details id="canvas">
-      <summary>Canvas</summary>
+    <DemoWrapper id="canvas" title="Canvas">
       <p>
         TODO: Link to whole page demo about Canvas (too many examples for here)
       </p>
-    </details>
+    </DemoWrapper>
   );
 };
 export default Canvas;

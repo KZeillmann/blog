@@ -2,7 +2,7 @@ import Keyboard from "./Keyboard";
 
 const Synth = () => {
   return (
-    <div class="container">
+    <div class="overflow-x-scroll">
       <Keyboard />
     </div>
   );

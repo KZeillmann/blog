@@ -9,8 +9,8 @@ import Sensor from "./Sensor";
 
 const WebApiPlayground = () => {
   return (
-    <section class="container">
-      <h1>Web APIs</h1>
+    <section class="flex flex-col items-start gap-2">
+      <h1 class="text-2xl">Web APIs</h1>
       <BroadcastChannelComponent />
       <Canvas />
       <Clipboard />

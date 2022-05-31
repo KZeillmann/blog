@@ -1,3 +1,5 @@
+import DemoWrapper from "./DemoWrapper";
+
 const MediaStream = () => {
   const onGetStarted = () => {
     navigator.mediaDevices.getUserMedia({ video: true }).then(
@@ -12,12 +14,11 @@ const MediaStream = () => {
     );
   };
   return (
-    <details open>
-      <summary>Image Capture</summary>
+    <DemoWrapper id="media-stream" title="Media Stream">
       <p>The MediaStream API provides support for streaming audio and video.</p>
       <button onClick={onGetStarted}>Get Started</button>
       <p>TODO: Implement</p>
-    </details>
+    </DemoWrapper>
   );
 };
 

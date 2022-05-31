@@ -1,4 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
+import DemoWrapper from "./DemoWrapper";
 
 const Clipboard = () => {
   const getClipboardContents = async () => {
@@ -62,8 +63,7 @@ const Clipboard = () => {
   );
 
   return (
-    <details>
-      <summary>Clipboard</summary>
+    <DemoWrapper id="clipboard" title="Clipboard">
       <p>
         The Clipboard API is only available in secure contexts. Some allow it
         based on browser permissions (whether it's allowed for the site).
@@ -89,7 +89,7 @@ const Clipboard = () => {
       <img src={clipboardImageSrc} />
       <p>And a place to paste text</p>
       <textarea name="" id="" cols="30" rows="5"></textarea>
-    </details>
+    </DemoWrapper>
   );
 };
 

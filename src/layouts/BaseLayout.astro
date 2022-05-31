@@ -1,0 +1,26 @@
+---
+// Component Imports
+import BaseHead from '../components/BaseHead.astro';
+import BaseHeader from '../components/BaseHeader.astro';
+
+const defaultTitle = 'Kevin Zeillmann';
+const defaultDescription = 'Occasional thoughts and demos';
+
+const { title, description, permalink } = Astro.props
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title || defaultTitle} description={description || defaultDescription} {permalink} />
+	</head>
+	<body>
+    <div class="max-w-7xl mx-8 md:mx-16 my-4 md:my-16s xl:mx-auto">
+      <BaseHeader />
+      <main >
+        <slot />
+      </main>
+      <footer></footer>
+    </div>
+
+	</body>
+</html>

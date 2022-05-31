@@ -1,20 +1,16 @@
 ---
 // Component Imports
-import BaseHead from '../../components/BaseHead.astro';
 import '../../styles/synth-demo.css';
 import Synth from '../../components/synth/Synth';
-import BaseHeader from '../../components/BaseHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Synth Demo';
 const description = 'A demo for the synth project';
 const permalink = 'https://kzeillmann.com/';
 ---
-<html lang="en">
-	<head>
-		<BaseHead {title} {description} {permalink} />
-    </head>
-    <body>
-        <BaseHeader />
-        <Synth client:only />
-    </body>
-</html>
+<BaseLayout>
+    <Synth client:only />
+    <p class="lg:hidden">This demo has been optimized for a desktop experience. If you're viewing it on a mobile device, you might be in for a bad time.
+        <p class="lg:hidden">Improvements may (or may not) come along the way.</p> 
+        
+</BaseLayout>

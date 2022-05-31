@@ -1,9 +1,11 @@
+import DemoWrapper from "./DemoWrapper";
+
 const Sensor = () => {
   return (
-    <details>
+    <DemoWrapper id="Sensor" title="Sensor">
       <summary>Sensor</summary>
       TODO
-    </details>
+    </DemoWrapper>
   );
 };
 export default Sensor;

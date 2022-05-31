@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import DemoWrapper from "./DemoWrapper";
 
 const GeolocationComponent = () => {
   const [permissionResults, setPermissionResults] = useState(
@@ -42,8 +43,7 @@ const GeolocationComponent = () => {
   };
 
   return (
-    <details>
-      <summary>Geolocation</summary>
+    <DemoWrapper id="geolocation" title="Geolocation">
       <p>Geolocation gets your current device location.</p>
       <div className="row">
         <button onClick={onGetLocation}>Get my location!</button>
@@ -59,7 +59,7 @@ const GeolocationComponent = () => {
           <li>Heading: {coordinates.heading || "Unknown"}</li>
         </ul>
       )}
-    </details>
+    </DemoWrapper>
   );
 };
 

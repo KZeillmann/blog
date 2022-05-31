@@ -1,66 +1,17 @@
-<header class="wrapper">
-	<article>
+<header class="flex mb-12 sm:mb-20">
+	<article class="mr-10 ">
 		<h1>
 			<a href="/">
-				<span class="logo">Kevin Zeillmann</span>
+				<span class="hidden sm:block text-3xl">Kevin Zeillmann</span>
+				<span class="sm:hidden text-2xl">KZ</span>
 			</a>
 		</h1>
 	</article>
+	<nav class="flex">
+		<ul class="flex gap-12 text-base">
+			<li><a href="/posts">Posts</a></li>
+			<li><a href="/demos">Demos</a></li>
+			<li><a href="/about">About</a></li>
+		</ul>
+	</nav>
 </header>
-
-<style>
-	header {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		height: 5rem;
-	}
-	article {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.header-subitem {
-		display: flex;
-		flex-grow: 0;
-		gap: 0.5em;
-		align-items: center;
-		justify-content: center;
-		color: var(--theme-text-lighter);
-		font-size: initial;
-		padding: 0.5rem;
-	}
-	.header-subitem:hover {
-		color: var(--theme-accent);
-	}
-	.header-subitem svg {
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-	@media (max-width: 32em) {
-		.header-subitem {
-			display: none;
-		}
-	}
-
-	h1 {
-		margin: 0;
-		font-size: 1.5rem;
-		max-width: 100%;
-		display: flex;
-		flex-grow: 1;
-	}
-
-	.logo {
-		transform: translateY(0.25rem);
-	}
-
-	svg {
-		width: 2.5rem;
-		height: 2.5rem;
-	}
-
-	h1 a {
-		text-decoration: none;
-		display: inline-flex;
-	}
-</style>
