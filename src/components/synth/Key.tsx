@@ -26,6 +26,8 @@ const Key = (props: KeyProps) => {
       data-frequency={note.frequency}
       onMouseDown={notePressed}
       onMouseUp={noteReleased}
+      onTouchStart={notePressed}
+      onTouchEnd={noteReleased}
       onMouseOver={notePressed}
       onMouseLeave={noteReleased}
     />
