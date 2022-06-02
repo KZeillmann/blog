@@ -1,5 +1,4 @@
 import DemoWrapper from "./DemoWrapper";
-
 const MediaStream = () => {
   const onGetStarted = () => {
     navigator.mediaDevices.getUserMedia({ video: true }).then(

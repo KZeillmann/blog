@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from "preact/hooks";
-import "preact/debug";
+import { createEffect, createSignal } from "solid-js";
 import DemoWrapper from "./DemoWrapper";
-
 const GamePad = () => {
   const myWindow = window;
   myWindow.addEventListener("gamepadconnected", () => {
@@ -14,7 +12,7 @@ const GamePad = () => {
   const gamePadConnectedMessage = "✔️ Gamepad connected! ";
   const gamePadDisconnectedMessage =
     "❌ No gamepad connected. If you have one connected, interact with it - press a button ore move a joystick.";
-  const [connectionMessage, setConnectionMessage] = useState(
+  const [connectionMessage, setConnectionMessage] = createSignal(
     gamePadDisconnectedMessage
   );
 
@@ -38,16 +36,16 @@ const GamePad = () => {
     "D Right",
   ];
 
-  const [connected, setConnected] = useState(false);
+  const [connected, setConnected] = createSignal(false);
 
-  const [gamePad, setGamePad] = useState<Gamepad | undefined>(undefined);
+  const [gamePad, setGamePad] = createSignal<Gamepad | undefined>(undefined);
 
-  const canvasRef = useRef();
+  let canvasRef;
 
   let lastAnimationFrame = undefined;
 
-  useEffect(() => {
-    if (connected) {
+  createEffect(() => {
+    if (connected()) {
       const gp = navigator.getGamepads()[0];
       console.log(gp.buttons);
       setGamePad(gp);
@@ -58,7 +56,7 @@ const GamePad = () => {
       setConnectionMessage(gamePadDisconnectedMessage);
       setGamePad(undefined);
     }
-  }, [connected]);
+  });
 
   const loop = () => {
     const gp = navigator.getGamepads()[0];
@@ -68,7 +66,7 @@ const GamePad = () => {
   };
 
   const animateCanvas = (gp: Gamepad) => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef;
     const ctx = canvas.getContext("2d");
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -103,12 +101,12 @@ const GamePad = () => {
   return (
     <DemoWrapper id="game-pad" title="Game Pad">
       <p>Gamepad Status: {connectionMessage}</p>
-      {connected && gamePad && (
+      {connected() && gamePad() && (
         <div>
           <h4>Gamepad Info</h4>
           <ul>
-            <li>id: {gamePad.id}</li>
-            <li>index: {gamePad.index}</li>
+            <li>id: {gamePad().id}</li>
+            <li>index: {gamePad().index}</li>
           </ul>
           <canvas width={400} height={200} ref={canvasRef}>
             Text here

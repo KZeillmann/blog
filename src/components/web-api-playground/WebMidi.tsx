@@ -1,14 +1,12 @@
-import { useEffect, useState } from "preact/hooks";
+import { createEffect, createSignal } from "solid-js";
 import DemoWrapper from "./DemoWrapper";
-
 const WebMidi = () => {
-  const [pitch, setPitch] = useState(60);
-  const [midiOutput, setMidiOutput] = useState<any>(undefined);
-  const [midiInput, setMidiInput] = useState<any>(undefined);
+  const [pitch, setPitch] = createSignal(60);
+  const [midiOutput, setMidiOutput] = createSignal<any>(undefined);
   // Navigator only exists on client
-  useEffect(() => {
+  createEffect(() => {
     getMidiAccess();
-  }, []);
+  });
   const getMidiAccess = async () => {
     // TypeScript is NOT happy with requestMIDIAccess, and @types/webmidi doesn't help
     navigator.requestMIDIAccess().then(
@@ -20,13 +18,13 @@ const WebMidi = () => {
     );
   };
   const onNoteDown = () => {
-    if (midiOutput) {
-      midiOutput.send([0x90, pitch, 0x7f]);
+    if (midiOutput()) {
+      midiOutput().send([0x90, pitch(), 0x7f]);
     }
   };
   const onNoteUp = () => {
-    if (midiOutput) {
-      midiOutput.send([0x80, pitch, 0x7f]);
+    if (midiOutput()) {
+      midiOutput().send([0x80, pitch(), 0x7f]);
     }
   };
   const onChangePitch = (event) => {
@@ -34,7 +32,11 @@ const WebMidi = () => {
   };
   return (
     <DemoWrapper id="web-midi" title="Web MIDI" open={true}>
-      <p>Web MIDI!</p>
+      <p>
+        Web MIDI is not widely supported yet, but if you have a digital keyboard
+        or another MIDI device you can connect to your computer, you can test
+        outputing to it here.
+      </p>
       <button
         onMouseDown={onNoteDown}
         onMouseUp={onNoteUp}

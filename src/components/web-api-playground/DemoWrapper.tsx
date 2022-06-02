@@ -1,9 +1,10 @@
+import { JSX } from "solid-js";
+
 interface Props {
   id: string;
   title: string;
   open?: boolean;
-  // actually required but Preact is unhappy
-  children?: preact.ComponentChildren;
+  children?: JSX.Element;
 }
 
 const DemoWrapper = (props: Props) => {

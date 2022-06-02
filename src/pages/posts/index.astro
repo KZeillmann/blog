@@ -9,7 +9,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // All variables are available to use in the HTML template below.
 const title = 'Kevin Zeillmann';
 const description = 'Occasional thoughts and demos';
-const permalink = 'https://kzeillmann.com/';
+const permalink = 'https://kzeillmann.com/posts';
 
 const { MODE } = import.meta.env;
 
@@ -23,10 +23,6 @@ const allPosts = (await Astro.glob('./*.md'))
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 <BaseLayout {title} {description} {permalink}>
-	<section class="intro">
-		<h1 class="latest">{title}</h1>
-		<p>{description}</p>
-	</section>
 	<section aria-label="Blog post list">
 		{allPosts.map((p) => <BlogPostPreview post={p} />)}
 	</section>

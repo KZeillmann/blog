@@ -1,11 +1,10 @@
-import { useState } from "preact/hooks";
+import { createSignal } from "solid-js";
 import DemoWrapper from "./DemoWrapper";
-
 const GeolocationComponent = () => {
-  const [permissionResults, setPermissionResults] = useState(
+  const [permissionResults, setPermissionResults] = createSignal(
     "Geolocation permissions undetermined"
   );
-  const [coordinates, setCoordinates] = useState<
+  const [coordinates, setCoordinates] = createSignal<
     GeolocationCoordinates | undefined
   >(undefined);
   const onGetLocation = () => {
@@ -26,7 +25,7 @@ const GeolocationComponent = () => {
   };
 
   const onWatchLocation = () => {
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       ({ coords }) => {
         setCoordinates(coords);
         setPermissionResults("✔️ You're allowed to use the Geolocation API");
@@ -50,13 +49,13 @@ const GeolocationComponent = () => {
         <button onClick={onWatchLocation}>Watch my location!</button>
       </div>
 
-      <p>Permissions: {permissionResults}</p>
-      {coordinates && (
+      <p>Permissions: {permissionResults()}</p>
+      {coordinates() && (
         <ul>
-          <li>Latitude: {coordinates.latitude}</li>
-          <li>Longitude: {coordinates.longitude}</li>
-          <li>Altitude: {coordinates.altitude || "Unknown"}</li>
-          <li>Heading: {coordinates.heading || "Unknown"}</li>
+          <li>Latitude: {coordinates().latitude}</li>
+          <li>Longitude: {coordinates().longitude}</li>
+          <li>Altitude: {coordinates().altitude || "Unknown"}</li>
+          <li>Heading: {coordinates().heading || "Unknown"}</li>
         </ul>
       )}
     </DemoWrapper>

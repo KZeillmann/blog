@@ -1,16 +1,15 @@
-import { useEffect, useState } from "preact/hooks";
+import { createEffect, createSignal } from "solid-js";
 import DemoWrapper from "./DemoWrapper";
-
 const ContactPicker = () => {
-  const [supportMessage, setSupportMessage] = useState(
+  const [supportMessage, setSupportMessage] = createSignal(
     "❓ Undetermined if Contact Picker API is supported in your browser"
   );
-  const [supported, setSupported] = useState(false);
+  const [supported, setSupported] = createSignal(false);
 
   // TODO: Get good types on this
-  const [selectedContact, setSelectedContact] = useState<any>(undefined);
+  const [selectedContact, setSelectedContact] = createSignal<any>(undefined);
 
-  useEffect(() => {
+  createEffect(() => {
     const supported = "contacts" in navigator;
     if (supported) {
       setSupportMessage("✔️ Contact Picker API is supported in your browser");
@@ -36,15 +35,15 @@ const ContactPicker = () => {
       <p>
         This is an experimental API only currently supported on Android devices.
       </p>
-      <p>Support: {supportMessage}</p>
-      {supported && <button onClick={selectContact}>Select a Contact</button>}
-      {selectedContact && (
+      <p>Support: {supportMessage()}</p>
+      {supported() && <button onClick={selectContact}>Select a Contact</button>}
+      {selectedContact() && (
         <>
           <h3>Contact Details</h3>
           <ul>
-            <li>Name: {selectedContact.name}</li>
-            <li>Emails: {selectedContact.email.join(", ")}</li>
-            <li>Telephone: {selectedContact.tel}</li>
+            <li>Name: {selectedContact().name}</li>
+            <li>Emails: {selectedContact().email.join(", ")}</li>
+            <li>Telephone: {selectedContact().tel}</li>
             {/* <li>Address (JSON): {selectedContact.address.toJSON()}</li> */}
             {/* <li>
               Icon: <img src={URL.createObjectURL(selectedContact.icon[0])} />

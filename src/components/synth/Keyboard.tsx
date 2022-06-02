@@ -1,5 +1,4 @@
 import Key from "./Key";
-
 export type Note = {
   octave: number;
   frequency: number;

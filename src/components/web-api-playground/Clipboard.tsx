@@ -1,6 +1,5 @@
-import { useEffect, useState } from "preact/hooks";
+import { createSignal } from "solid-js";
 import DemoWrapper from "./DemoWrapper";
-
 const Clipboard = () => {
   const getClipboardContents = async () => {
     navigator.clipboard.read().then(
@@ -52,13 +51,13 @@ const Clipboard = () => {
     );
   };
 
-  const [clipboardText, setClipboardText] = useState<string | undefined>();
+  const [clipboardText, setClipboardText] = createSignal<string | undefined>();
 
-  const [clipboardImageSrc, setClipboardImageSrc] = useState<
+  const [clipboardImageSrc, setClipboardImageSrc] = createSignal<
     string | undefined
   >();
 
-  const [permissionMessage, setPermissionMessage] = useState(
+  const [permissionMessage, setPermissionMessage] = createSignal(
     "❓ Undetermined if you are allowed to read clipboard contents"
   );
 
@@ -68,7 +67,7 @@ const Clipboard = () => {
         The Clipboard API is only available in secure contexts. Some allow it
         based on browser permissions (whether it's allowed for the site).
       </p>
-      <p>Permission settings: {permissionMessage}</p>
+      <p>Permission settings: {permissionMessage()}</p>
       <div className="row">
         <button onClick={getClipboardContents}>Read Clipboard</button>
         <button
@@ -81,12 +80,12 @@ const Clipboard = () => {
           Copy Text to Clipboard
         </button>
       </div>
-      <p>Your clipboard text contents are: {clipboardText}</p>
+      <p>Your clipboard text contents are: {clipboardText()}</p>
       <p>
         Your clipboard image contents are:{" "}
-        {!clipboardImageSrc && "[No image in clipboard]"}
+        {!clipboardImageSrc() && "[No image in clipboard]"}
       </p>
-      <img src={clipboardImageSrc} />
+      <img src={clipboardImageSrc()} />
       <p>And a place to paste text</p>
       <textarea name="" id="" cols="30" rows="5"></textarea>
     </DemoWrapper>

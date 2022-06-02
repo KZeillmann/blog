@@ -6,11 +6,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Synth Demo';
 const description = 'A demo for the synth project';
-const permalink = 'https://kzeillmann.com/';
+const permalink = 'https://kzeillmann.com/demos/synth-demo';
 ---
-<BaseLayout>
-    <Synth client:only />
+<BaseLayout {title} {description} {permalink}>
+    <Synth client:only="solid-js" />
     <p class="lg:hidden">This demo has been optimized for a desktop experience. If you're viewing it on a mobile device, you might be in for a bad time.</p>
-        <p class="lg:hidden">Improvements may (or may not) come along the way.</p> 
+    <p class="lg:hidden">Improvements may (or may not) come along the way.</p> 
         
 </BaseLayout>

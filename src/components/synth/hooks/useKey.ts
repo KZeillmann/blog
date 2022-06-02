@@ -1,16 +1,16 @@
-import { useState } from "preact/hooks";
+import { createSignal } from "solid-js";
 
 const useKey = (
   audioContext: AudioContext,
   gainNode: GainNode,
   frequency: number
 ) => {
-  const [pressed, setPressed] = useState(false);
-  const [oscillator, setOscillator] = useState<OscillatorNode | null>(null);
+  const [pressed, setPressed] = createSignal(false);
+  const [oscillator, setOscillator] = createSignal<OscillatorNode | null>(null);
 
   const notePressed = (event) => {
     if (event.buttons & 1) {
-      if (!pressed) {
+      if (!pressed()) {
         setOscillator(playTone(frequency));
         setPressed(true);
       }
@@ -18,8 +18,8 @@ const useKey = (
   };
 
   const noteReleased = (event) => {
-    if (pressed) {
-      oscillator.stop();
+    if (pressed()) {
+      oscillator().stop();
       setPressed(false);
     }
   };

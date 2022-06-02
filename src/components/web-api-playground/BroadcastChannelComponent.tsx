@@ -1,14 +1,13 @@
-import { useState } from "preact/hooks";
+import { createSignal } from "solid-js";
 import DemoWrapper from "./DemoWrapper";
-
 const BroadcastChannelComponent = () => {
   const channel = new BroadcastChannel("kevin");
   channel.onmessage = (event) => {
-    setSentMessages([...sentMessages, event.data]);
+    setSentMessages([...sentMessages(), event.data]);
   };
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = createSignal("");
 
-  const [sentMessages, setSentMessages] = useState<string[]>([]);
+  const [sentMessages, setSentMessages] = createSignal<string[]>([]);
 
   const onMessageInputChange = (event) => {
     setMessage(event.target.value);
@@ -16,8 +15,8 @@ const BroadcastChannelComponent = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setSentMessages([...sentMessages, message]);
-    channel.postMessage(message);
+    setSentMessages([...sentMessages(), message()]);
+    channel.postMessage(message());
   };
   return (
     <DemoWrapper id="broadcast-channel" title="Broadcast Channel">
@@ -32,7 +31,7 @@ const BroadcastChannelComponent = () => {
         context!
       </p>
       <div className="chat-area">
-        {sentMessages.map((sentMessage) => {
+        {sentMessages().map((sentMessage) => {
           return <p>{sentMessage}</p>;
         })}
       </div>
@@ -40,7 +39,7 @@ const BroadcastChannelComponent = () => {
         <input
           type="text"
           name="message"
-          value={message}
+          value={message()}
           onInput={onMessageInputChange}
         />
         <input type="Submit" value="Submit" />

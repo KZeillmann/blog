@@ -1,6 +1,5 @@
 import useKey from "./hooks/useKey";
 import { Note } from "./Keyboard";
-
 type KeyProps = {
   note: Note;
   audioContext: AudioContext;

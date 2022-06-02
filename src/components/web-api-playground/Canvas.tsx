@@ -1,5 +1,4 @@
 import DemoWrapper from "./DemoWrapper";
-
 const Canvas = () => {
   return (
     <DemoWrapper id="canvas" title="Canvas">

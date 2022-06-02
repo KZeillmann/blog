@@ -4,10 +4,10 @@ import Clipboard from "./Clipboard";
 import ContactPicker from "./ContactPicker";
 import GamePad from "./GamePad";
 import GeolocationComponent from "./GeolocationComponent";
-import MediaStream from "./MediaStream";
 import Sensor from "./Sensor";
-
-const WebApiPlayground = () => {
+import MediaStreamComponent from "./MediaStream";
+import WebMidi from "./WebMidi";
+const WebApiPlaygroundSolid = () => {
   return (
     <section class="flex flex-col items-start gap-2">
       <h1 class="text-2xl">Web APIs</h1>
@@ -17,10 +17,10 @@ const WebApiPlayground = () => {
       <ContactPicker />
       <GamePad />
       <GeolocationComponent />
-      <MediaStream />
+      <MediaStreamComponent />
       <Sensor />
+      <WebMidi />
     </section>
   );
 };
-
-export default WebApiPlayground;
+export default WebApiPlaygroundSolid;
