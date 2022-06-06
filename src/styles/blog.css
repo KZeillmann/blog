@@ -1,0 +1,5 @@
+/* Override default TailwindCSS styles */
+ol {
+  list-style: decimal;
+  padding-inline-start: 2rem;
+}

@@ -23,9 +23,10 @@ const allPosts = (await Astro.glob('./posts/*.md'))
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 <BaseLayout {title} {description} {permalink}>
+	<!-- TODO: Add real intro -->
 	<section class="intro">
-		<h1 class="latest">{title}</h1>
-		<p>{description}</p>
+		<!-- <h1 class="latest">{title}</h1> -->
+		<!-- <p>{description}</p> -->
 	</section>
 	<section aria-label="Blog post list">
 		{allPosts.map((p) => <BlogPostPreview post={p} />)}
