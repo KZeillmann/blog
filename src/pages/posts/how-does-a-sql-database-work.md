@@ -3,7 +3,7 @@ setup: |
   import Layout from '../../layouts/BlogPost.astro'
   import Cool from '../../components/Author.astro'
   import '../../styles/blog.css'
-title: How Does an SQL Database Work? (Part 1)
+title: How Does a SQL Database Work? (Part 1)
 description: An exploration of the PostgreSQL source code
 publishDate: 2022 July 17
 draft: false
