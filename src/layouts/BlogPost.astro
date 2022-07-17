@@ -2,7 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import BaseHeader from '../components/BaseHeader.astro';
 import BlogPost from '../components/BlogPost.astro';
-
+import '../styles/main.css';
+import '../styles/blog.css'
 
 const { content } = Astro.props;
 const { title, description, publishDate, author, heroImage, permalink, alt } = content;
@@ -15,11 +16,13 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
 	</head>
 
 	<body>
-		<BaseHeader />
-		<div class="wrapper">
-			<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
-				<slot />
-			</BlogPost>
-		</div>
+		<div class="max-w-7xl mx-8 md:mx-16 my-4 md:my-16s xl:mx-auto">
+				<BaseHeader />
+				<div class="wrapper">
+					<BlogPost {title} {author} {heroImage} {publishDate} {alt}>
+						<slot />
+					</BlogPost>
+				</div>
+			</div>
 	</body>
 </html>
