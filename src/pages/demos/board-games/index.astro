@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+const title = "Board Game Related Demos"
+const description = "Demos related to board games"
+const permalink = "https://kzeillmann.com/demos/board-games"
+
+
+---
+<BaseLayout {title} {description} {permalink}>
+  <section>
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </section>
+  <div class="demo-container">
+    <article>
+      <a href="/demos/board-games/spirit-island"><h2>Spirit Island</h2></a>
+    </article>
+  </div>
+</BaseLayout>
+ 

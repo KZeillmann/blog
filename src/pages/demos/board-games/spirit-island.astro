@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SpiritIsland from "../../../components/board-game/spirit-island/SpiritIsland";
+const title = "Spirit Island Demo"
+const description = "Spirit Island simulator"
+const permalink = "https://kzeillmann.com/demos/board-games/spirit-island"
+
+
+---
+<BaseLayout {title} {description} {permalink}>
+  <SpiritIsland client:only="react" />
+</BaseLayout>
+ 
