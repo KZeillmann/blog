@@ -9,7 +9,32 @@ export interface Land {
   terrain: Terrain;
   isCoastal: boolean;
   coordinates: LandCoordinates;
+  initialContents: LandContents;
 }
+
+interface LandContents {
+  spirits: SpiritPresence;
+  dahan: DahanPresence;
+  invaders: InvaderPresence;
+  isBlighted: boolean;
+}
+
+type SpiritPresence = {
+  [key in SpiritName]?: number;
+};
+
+type DahanPresence = {
+  damagedHuts?: number;
+  intactHuts?: number;
+};
+
+type InvaderPresence = {
+  explorers?: number;
+  towns?: number;
+  cities?: number;
+};
+
+type SpiritName = "River Surges in Sunlight" | "Vital Strength of Earth";
 
 // Rectangle for now
 export interface LandCoordinates {
@@ -20,6 +45,13 @@ export interface LandCoordinates {
 }
 
 export type Terrain = "MOUNTAIN" | "WETLAND" | "JUNGLE" | "SANDS";
+
+const baseInitialContents: LandContents = {
+  spirits: {},
+  dahan: {},
+  invaders: {},
+  isBlighted: false,
+};
 
 const BoardA: Board = {
   name: "A",
@@ -35,6 +67,7 @@ const BoardA: Board = {
         yStart: 10,
         yEnd: 55,
       },
+      initialContents: { ...baseInitialContents },
     },
     {
       id: 2,
@@ -46,6 +79,11 @@ const BoardA: Board = {
         xEnd: 30,
         yStart: 30,
         yEnd: 70,
+      },
+      initialContents: {
+        ...baseInitialContents,
+        dahan: { intactHuts: 1 },
+        invaders: { cities: 1 },
       },
     },
     {
@@ -59,6 +97,10 @@ const BoardA: Board = {
         yStart: 70,
         yEnd: 90,
       },
+      initialContents: {
+        ...baseInitialContents,
+        dahan: { intactHuts: 2 },
+      },
     },
     {
       id: 4,
@@ -70,6 +112,10 @@ const BoardA: Board = {
         xEnd: 50,
         yStart: 55,
         yEnd: 85,
+      },
+      initialContents: {
+        ...baseInitialContents,
+        isBlighted: true,
       },
     },
     {
@@ -83,6 +129,7 @@ const BoardA: Board = {
         yStart: 45,
         yEnd: 85,
       },
+      initialContents: { ...baseInitialContents },
     },
     {
       id: 6,
@@ -94,6 +141,10 @@ const BoardA: Board = {
         xEnd: 70,
         yStart: 20,
         yEnd: 45,
+      },
+      initialContents: {
+        ...baseInitialContents,
+        dahan: { intactHuts: 1 },
       },
     },
     {
@@ -107,6 +158,10 @@ const BoardA: Board = {
         yStart: 40,
         yEnd: 90,
       },
+      initialContents: {
+        ...baseInitialContents,
+        dahan: { intactHuts: 2 },
+      },
     },
     {
       id: 8,
@@ -118,6 +173,12 @@ const BoardA: Board = {
         xEnd: 92,
         yStart: 15,
         yEnd: 40,
+      },
+      initialContents: {
+        ...baseInitialContents,
+        invaders: {
+          towns: 1,
+        },
       },
     },
   ],

@@ -46,7 +46,7 @@ const useBoard = () => {
     ctx.fillText(
       `${land.terrain} ${land.id}`,
       textStartX,
-      +fontSizePixels,
+      textStartY + fontSizePixels,
       width - 2
     );
     ctx.fillText(
